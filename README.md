@@ -79,6 +79,18 @@ then look for lines like this in the console output in order to find the URL to 
 Login to the dashboard at: http://localhost:19888/login?t=uniquelogincodeforyou
 ```
 
+### Troubleshooting Aspire container startup
+
+Aspire uses Docker containers for infrastructure services (PostgreSQL, Redis, RabbitMQ, and the YARP mobile BFF). If you see container or network creation errors similar to:
+
+```
+Error response from daemon: could not find plugin bridge in v1 plugin registry: plugin not found
+```
+
+- Ensure Docker Desktop (or Docker Engine with the default `bridge` network driver) is installed and running.
+- Verify you are using the default Docker context (`docker context use default`) rather than a context without the `bridge` driver (such as some Podman or containerd contexts).
+- If the bridge driver was removed or disabled, reinstalling Docker Desktop typically restores it.
+
 > You may need to install ASP.NET Core HTTPS development certificates first, and then close all browser tabs. Learn more at https://aka.ms/aspnet/https-trust-dev-cert
 
 ### Azure Open AI
